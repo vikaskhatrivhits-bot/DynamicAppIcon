@@ -5,7 +5,8 @@ export const APP_ICONS = ['Default', 'Holi', 'Utrayan', 'Diwali'] as const;
 export type AppIconName = (typeof APP_ICONS)[number];
 
 export type AppIconErrorCode =
-  // Raised by the native module (android/.../appicon/AppIconModule.kt).
+  // Raised by the native modules (android/.../appicon/AppIconModule.kt and
+  // ios/MustWatch/AppIconModule.swift).
   | 'E_INVALID_ICON'
   | 'E_MISSING_ALIAS'
   | 'E_INVALID_STATE'
@@ -44,7 +45,7 @@ interface AppIconNativeModule {
 }
 
 export function isAppIconSwitchingSupported(): boolean {
-  return Platform.OS === 'android';
+  return Platform.OS === 'android' || Platform.OS === 'ios';
 }
 
 export function isAppIconName(value: unknown): value is AppIconName {
@@ -54,12 +55,12 @@ export function isAppIconName(value: unknown): value is AppIconName {
   );
 }
 
-// Resolved lazily so nothing touches the Android-only module on other platforms.
+// Resolved lazily so nothing touches the native module on unsupported platforms.
 function getNativeModule(): AppIconNativeModule {
   if (!isAppIconSwitchingSupported()) {
     throw new AppIconError(
       'E_UNSUPPORTED_PLATFORM',
-      `App icon switching is only supported on Android (current platform: ${Platform.OS}).`,
+      `App icon switching is only supported on Android and iOS (current platform: ${Platform.OS}).`,
     );
   }
   const native = NativeModules[MODULE_NAME] as
@@ -72,7 +73,9 @@ function getNativeModule(): AppIconNativeModule {
   ) {
     throw new AppIconError(
       'E_MODULE_UNAVAILABLE',
-      `Native module "${MODULE_NAME}" is not registered. Check that AppIconPackage is added in MainApplication.getPackages() and rebuild the Android app.`,
+      Platform.OS === 'ios'
+        ? `Native module "${MODULE_NAME}" is not registered. Check that AppIconModule.swift and AppIconModule.m are in the MustWatch target and rebuild the iOS app.`
+        : `Native module "${MODULE_NAME}" is not registered. Check that AppIconPackage is added in MainApplication.getPackages() and rebuild the Android app.`,
     );
   }
   return native as AppIconNativeModule;
@@ -111,6 +114,7 @@ export async function getIcon(): Promise<AppIconName> {
   let result: unknown;
   try {
     result = await native.getIcon();
+    console.log('native side result got ->', JSON.stringify(result, null, 2))
   } catch (error) {
     throw toAppIconError(error);
   }

@@ -22,15 +22,25 @@ import {
   setIcon,
 } from '../services/appIcon';
 
-// Android drawable aliases of the launcher mipmaps
+// Android: drawable aliases of the launcher mipmaps
 // (android/app/src/main/res/values/app_icon_previews.xml), so previews use the
 // exact artwork bundled for the launcher instead of a separate JS copy.
-const PREVIEWS: Record<AppIconName, ImageSourcePropType> = {
-  Default: { uri: 'app_icon_preview_default' },
-  Holi: { uri: 'app_icon_preview_holi' },
-  Utrayan: { uri: 'app_icon_preview_utrayan' },
-  Diwali: { uri: 'app_icon_preview_diwali' },
-};
+// iOS: app icon sets cannot be loaded as images, so the same artwork is bundled
+// from the 192px Android mipmaps (the iOS 1024px sources are 1-2.5 MB each).
+const PREVIEWS: Record<AppIconName, ImageSourcePropType> =
+  Platform.OS === 'ios'
+    ? {
+      Default: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_default.png'),
+      Holi: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_holi.png'),
+      Utrayan: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_utrayan.png'),
+      Diwali: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_diwali.png'),
+    }
+    : {
+      Default: { uri: 'app_icon_preview_default' },
+      Holi: { uri: 'app_icon_preview_holi' },
+      Utrayan: { uri: 'app_icon_preview_utrayan' },
+      Diwali: { uri: 'app_icon_preview_diwali' },
+    };
 
 type Status = 'loading' | 'ready' | 'switching';
 
@@ -67,7 +77,7 @@ function UnsupportedPlatform() {
           Choose App Icon
         </Text>
         <Text style={styles.subtitle}>
-          Seasonal app icons are currently available on Android only.
+          Seasonal app icons are currently available on Android and iOS only.
         </Text>
       </View>
     </SafeAreaView>
@@ -90,7 +100,7 @@ function AppIconPicker() {
 
   const enqueue = useCallback((task: () => Promise<void>) => {
     const next = queueRef.current.then(task, task);
-    queueRef.current = next.catch(() => {});
+    queueRef.current = next.catch(() => { });
     return next;
   }, []);
 
@@ -133,6 +143,7 @@ function AppIconPicker() {
       if (busyRef.current) {
         return;
       }
+      console.log('current ref icon ---', JSON.stringify(currentRef, null, 2))
       // currentRef is only set from successful reads, i.e. a valid single-alias state.
       if (currentRef.current === icon) {
         return;
@@ -190,14 +201,15 @@ function AppIconPicker() {
   const busy = status !== 'ready';
 
   return (
-    <View style={styles.root}>
+    <SafeAreaView style={styles.root}>
       <StatusBar barStyle="dark-content" backgroundColor={COLORS.background} />
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={styles.title} accessibilityRole="header">
           Choose App Icon
         </Text>
         <Text style={styles.subtitle}>
-          Pick the icon MustWatch shows in your Android launcher. Your choice is
+          Pick the icon MustWatch shows in your{' '}
+          {Platform.OS === 'ios' ? 'Home Screen' : 'Android launcher'}. Your choice is
           saved on this device and works offline.
         </Text>
 
@@ -289,7 +301,7 @@ function AppIconPicker() {
           take a moment to refresh.
         </Text>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
