@@ -5,11 +5,16 @@
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
+      android:icon="@mipmap/ic_launcher_default"
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
+      <!--
+        MainActivity stays enabled but has no MAIN/LAUNCHER filter: the launcher
+        entry comes from exactly one of the IconX aliases below. AppIconModule
+        toggles the aliases with PackageManager. Alias names are persisted in
+        users' component state, so keep them stable across releases.
+      -->
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -17,10 +22,58 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
+      </activity>
+
+      <activity-alias
+        android:name="${applicationId}.IconDefault"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_default"
+        android:enabled="true"
+        android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-      </activity>
+      </activity-alias>
+
+      <activity-alias
+        android:name="${applicationId}.IconHoli"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_holi"
+        android:enabled="false"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity-alias>
+
+      <activity-alias
+        android:name="${applicationId}.IconUtrayan"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_utrayan"
+        android:enabled="false"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity-alias>
+
+      <activity-alias
+        android:name="${applicationId}.IconDiwali"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_diwali"
+        android:enabled="false"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity-alias>
     </application>
 </manifest>

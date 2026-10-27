@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Drawable aliases of the launcher mipmaps so the JS icon picker can show
+  previews via <Image source={{ uri: 'app_icon_preview_x' }} />. React Native
+  only resolves bare-name image URIs against the "drawable" type, and this way
+  the artwork exists once, in mipmap-*, for both the launcher and the app.
+-->
+<resources>
+    <drawable name="app_icon_preview_default">@mipmap/ic_launcher_default</drawable>
+    <drawable name="app_icon_preview_holi">@mipmap/ic_launcher_holi</drawable>
+    <drawable name="app_icon_preview_utrayan">@mipmap/ic_launcher_utrayan</drawable>
+    <drawable name="app_icon_preview_diwali">@mipmap/ic_launcher_diwali</drawable>
+</resources>
