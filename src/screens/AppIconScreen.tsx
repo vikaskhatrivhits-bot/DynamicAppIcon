@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   AppState,
   Image,
-  ImageSourcePropType,
   Platform,
   Pressable,
   SafeAreaView,
@@ -21,26 +20,7 @@ import {
   isAppIconSwitchingSupported,
   setIcon,
 } from '../services/appIcon';
-
-// Android: drawable aliases of the launcher mipmaps
-// (android/app/src/main/res/values/app_icon_previews.xml), so previews use the
-// exact artwork bundled for the launcher instead of a separate JS copy.
-// iOS: app icon sets cannot be loaded as images, so the same artwork is bundled
-// from the 192px Android mipmaps (the iOS 1024px sources are 1-2.5 MB each).
-const PREVIEWS: Record<AppIconName, ImageSourcePropType> =
-  Platform.OS === 'ios'
-    ? {
-      Default: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_default.png'),
-      Holi: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_holi.png'),
-      Utrayan: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_utrayan.png'),
-      Diwali: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_diwali.png'),
-    }
-    : {
-      Default: { uri: 'app_icon_preview_default' },
-      Holi: { uri: 'app_icon_preview_holi' },
-      Utrayan: { uri: 'app_icon_preview_utrayan' },
-      Diwali: { uri: 'app_icon_preview_diwali' },
-    };
+import { PREVIEWS } from '../generated/appIcons';
 
 type Status = 'loading' | 'ready' | 'switching';
 

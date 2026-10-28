@@ -1,6 +1,8 @@
 import { NativeModules, Platform } from 'react-native';
+import { APP_ICONS } from '../generated/appIcons';
 
-export const APP_ICONS = ['Default', 'Holi', 'Utrayan', 'Diwali'] as const;
+// Generated from app-icons/icons.json by `npm run icons:generate`.
+export { APP_ICONS };
 
 export type AppIconName = (typeof APP_ICONS)[number];
 

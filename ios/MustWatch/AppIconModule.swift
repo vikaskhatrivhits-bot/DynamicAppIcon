@@ -11,15 +11,18 @@ import os
 @objc(AppIconModule)
 final class AppIconModule: NSObject {
 
+  // BEGIN GENERATED APP ICONS (npm run icons:generate; do not edit by hand)
   /// JS icon name -> alternate icon set name (`nil` = primary AppIcon).
   private static let iconSets: [String: String?] = [
     "Default": nil,
     "Holi": "AppIconHoli",
     "Utrayan": "AppIconUtrayan",
     "Diwali": "AppIconDiwali",
+    "Navratri": "AppIconNavratri",
   ]
 
-  private static let orderedNames = ["Default", "Holi", "Utrayan", "Diwali"]
+  private static let orderedNames = ["Default", "Holi", "Utrayan", "Diwali", "Navratri"]
+  // END GENERATED APP ICONS
 
   /// Diagnostics for icon switching. In Xcode's console, filter by "AppIcon".
   private static let log = Logger(

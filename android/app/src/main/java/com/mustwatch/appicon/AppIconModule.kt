@@ -203,6 +203,7 @@ class AppIconModule(reactContext: ReactApplicationContext) :
   companion object {
     const val NAME = "AppIconModule"
 
+    // BEGIN GENERATED APP ICONS (npm run icons:generate; do not edit by hand)
     /** JS icon name -> alias suffix; must match `${applicationId}.<suffix>` in the manifest. */
     private val ALIASES =
         linkedMapOf(
@@ -210,6 +211,7 @@ class AppIconModule(reactContext: ReactApplicationContext) :
             "Holi" to "IconHoli",
             "Utrayan" to "IconUtrayan",
             "Diwali" to "IconDiwali",
+            "Navratri" to "IconNavratri",
         )
 
     /** Aliases declared with android:enabled="true" in the manifest. */
@@ -222,7 +224,9 @@ class AppIconModule(reactContext: ReactApplicationContext) :
             "Holi" to R.mipmap.ic_launcher_holi,
             "Utrayan" to R.mipmap.ic_launcher_utrayan,
             "Diwali" to R.mipmap.ic_launcher_diwali,
+            "Navratri" to R.mipmap.ic_launcher_navratri,
         )
+    // END GENERATED APP ICONS
 
     private fun componentFor(context: Context, icon: String): ComponentName =
         ComponentName(context.packageName, "${context.packageName}.${ALIASES.getValue(icon)}")
