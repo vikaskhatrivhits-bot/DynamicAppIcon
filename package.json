@@ -5,9 +5,9 @@
   "scripts": {
     "android": "react-native run-android --main-activity MainActivity",
     "ios": "react-native run-ios",
-    "icons:add": "node scripts/add-app-icon.js",
-    "icons:generate": "node scripts/generate-app-icons.js",
-    "icons:check": "node scripts/generate-app-icons.js --check",
+    "icons:add": "node app-icon-kit/add.js",
+    "icons:generate": "node app-icon-kit/generate.js",
+    "icons:check": "node app-icon-kit/generate.js --check",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"

@@ -1,0 +1,24 @@
+{
+  "name": "app-icon-kit",
+  "version": "1.0.0",
+  "description": "Switchable launcher icons for React Native (Android + iOS) with one command per icon.",
+  "private": true,
+  "bin": {
+    "app-icon-kit": "cli.js"
+  },
+  "files": [
+    "cli.js",
+    "setup.js",
+    "add.js",
+    "generate.js",
+    "lib/",
+    "templates/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "darwin"
+  ]
+}

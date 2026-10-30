@@ -1,0 +1,11 @@
+{
+  "android": {
+    "packageName": "com.mustwatch"
+  },
+  "ios": {
+    "appName": "MustWatch"
+  },
+  "iconsDir": "app-icons",
+  "generatedFile": "src/generated/appIcons.ts",
+  "serviceFile": "src/services/appIcon.ts"
+}
