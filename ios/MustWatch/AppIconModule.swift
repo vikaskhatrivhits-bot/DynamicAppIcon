@@ -19,9 +19,11 @@ final class AppIconModule: NSObject {
     "Utrayan": "AppIconUtrayan",
     "Diwali": "AppIconDiwali",
     "Navratri": "AppIconNavratri",
+    "Dussera": "AppIconDussera",
+    "Butterfly": "AppIconButterfly",
   ]
 
-  private static let orderedNames = ["Default", "Holi", "Utrayan", "Diwali", "Navratri"]
+  private static let orderedNames = ["Default", "Holi", "Utrayan", "Diwali", "Navratri", "Dussera", "Butterfly"]
   // END GENERATED APP ICONS
 
   /// Diagnostics for icon switching. In Xcode's console, filter by "AppIcon".

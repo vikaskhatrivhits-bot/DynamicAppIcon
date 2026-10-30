@@ -1,3 +1,11 @@
 {
-  "icons": ["Default", "Holi", "Utrayan", "Diwali", "Navratri"]
+  "icons": [
+    "Default",
+    "Holi",
+    "Utrayan",
+    "Diwali",
+    "Navratri",
+    "Dussera",
+    "Butterfly"
+  ]
 }

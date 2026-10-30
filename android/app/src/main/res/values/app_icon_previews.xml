@@ -13,4 +13,6 @@
     <drawable name="app_icon_preview_utrayan">@mipmap/ic_launcher_utrayan</drawable>
     <drawable name="app_icon_preview_diwali">@mipmap/ic_launcher_diwali</drawable>
     <drawable name="app_icon_preview_navratri">@mipmap/ic_launcher_navratri</drawable>
+    <drawable name="app_icon_preview_dussera">@mipmap/ic_launcher_dussera</drawable>
+    <drawable name="app_icon_preview_butterfly">@mipmap/ic_launcher_butterfly</drawable>
 </resources>

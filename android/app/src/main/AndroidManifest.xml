@@ -89,6 +89,32 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity-alias>
+
+      <activity-alias
+        android:name="${applicationId}.IconDussera"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_dussera"
+        android:enabled="false"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity-alias>
+
+      <activity-alias
+        android:name="${applicationId}.IconButterfly"
+        android:targetActivity=".MainActivity"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher_butterfly"
+        android:enabled="false"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity-alias>
       <!-- END GENERATED APP ICON ALIASES -->
     </application>
 </manifest>

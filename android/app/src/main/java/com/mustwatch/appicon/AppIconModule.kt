@@ -212,6 +212,8 @@ class AppIconModule(reactContext: ReactApplicationContext) :
             "Utrayan" to "IconUtrayan",
             "Diwali" to "IconDiwali",
             "Navratri" to "IconNavratri",
+            "Dussera" to "IconDussera",
+            "Butterfly" to "IconButterfly",
         )
 
     /** Aliases declared with android:enabled="true" in the manifest. */
@@ -225,6 +227,8 @@ class AppIconModule(reactContext: ReactApplicationContext) :
             "Utrayan" to R.mipmap.ic_launcher_utrayan,
             "Diwali" to R.mipmap.ic_launcher_diwali,
             "Navratri" to R.mipmap.ic_launcher_navratri,
+            "Dussera" to R.mipmap.ic_launcher_dussera,
+            "Butterfly" to R.mipmap.ic_launcher_butterfly,
         )
     // END GENERATED APP ICONS
 

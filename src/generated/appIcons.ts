@@ -7,6 +7,8 @@ export const APP_ICONS = [
   'Utrayan',
   'Diwali',
   'Navratri',
+  'Dussera',
+  'Butterfly',
 ] as const;
 
 type GeneratedAppIconName = (typeof APP_ICONS)[number];
@@ -24,6 +26,8 @@ export const PREVIEWS: Record<GeneratedAppIconName, ImageSourcePropType> =
         Utrayan: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_utrayan.png'),
         Diwali: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_diwali.png'),
         Navratri: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_navratri.png'),
+        Dussera: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_dussera.png'),
+        Butterfly: require('../../android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_butterfly.png'),
       }
     : {
         Default: { uri: 'app_icon_preview_default' },
@@ -31,4 +35,6 @@ export const PREVIEWS: Record<GeneratedAppIconName, ImageSourcePropType> =
         Utrayan: { uri: 'app_icon_preview_utrayan' },
         Diwali: { uri: 'app_icon_preview_diwali' },
         Navratri: { uri: 'app_icon_preview_navratri' },
+        Dussera: { uri: 'app_icon_preview_dussera' },
+        Butterfly: { uri: 'app_icon_preview_butterfly' },
       };
